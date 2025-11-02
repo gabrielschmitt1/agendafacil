@@ -34,12 +34,20 @@ jobs:
           restore-keys: |
             cypress-${{ runner.os }}-
       
+      # Instalar dependências
+      - name: Install dependencies
+        run: pnpm install
+      
+      # Instalar binário do Cypress explicitamente
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
+      
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          install: false
           start: pnpm start
           wait-on: 'http://localhost:8081'
-          install-command: pnpm install --ignore-scripts=false
           record: true
           parallel: true
         env:

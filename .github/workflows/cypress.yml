@@ -25,11 +25,21 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
       
+      # Cache do binário do Cypress
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+      
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
+          start: pnpm start
           wait-on: 'http://localhost:8081'
+          install-command: pnpm install --ignore-scripts=false
           record: true
           parallel: true
         env:

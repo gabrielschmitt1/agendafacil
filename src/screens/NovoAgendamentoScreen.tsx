@@ -15,9 +15,15 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useApp } from '../contexts/AppContext';
 import { useNotifications } from '../contexts/NotificationContext';
 import { Agendamento } from '../types';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../navigation/AppNavigator';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function NovoAgendamentoScreen() {
   const theme = useTheme();
+  const navigation = useNavigation<NavigationProp>();
   const { adicionarAgendamento } = useApp();
   const { agendarNotificacao } = useNotifications();
 
@@ -69,7 +75,8 @@ export default function NovoAgendamentoScreen() {
       setData(new Date());
       setHora(new Date());
       
-      alert('✅ Agendamento criado e notificação agendada!');
+      // Navegar para a tela de sucesso
+      navigation.navigate('SucessoAgendamento');
     } catch (error) {
       alert('❌ Erro ao criar agendamento. Tente novamente.');
       console.error(error);

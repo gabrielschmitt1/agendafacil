@@ -12,10 +12,12 @@ import MeusAgendamentosScreen from '../screens/MeusAgendamentosScreen';
 import DetalhesAgendamentoScreen from '../screens/DetalhesAgendamentoScreen';
 import RelatoriosScreen from '../screens/RelatoriosScreen';
 import ConfiguracoesScreen from '../screens/ConfiguracoesScreen';
+import SucessoAgendamentoScreen from '../screens/SucessoAgendamentoScreen';
 
 export type RootStackParamList = {
-  MainTabs: undefined;
+  MainTabs: { screen?: keyof MainTabsParamList };
   DetalhesAgendamento: { agendamentoId: string };
+  SucessoAgendamento: undefined;
 };
 
 export type MainTabsParamList = {
@@ -112,6 +114,11 @@ export function AppNavigator() {
           name="DetalhesAgendamento"
           component={DetalhesAgendamentoScreen}
           options={{ headerShown: true, title: 'Detalhes do Agendamento' }}
+        />
+        <Stack.Screen
+          name="SucessoAgendamento"
+          component={SucessoAgendamentoScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

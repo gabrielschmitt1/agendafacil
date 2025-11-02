@@ -49,39 +49,6 @@ npm install
 npm start
 ```
 
-### Documentação Completa
-
-- 📘 [**Guia de Instalação Completo**](docs/setup/INSTALACAO.md)
-- ⚡ [**Quick Start**](docs/setup/QUICK_START.md)
-- 🚀 [**Instalação Rápida (APK)**](docs/setup/INSTALAR_RAPIDO.md)
-- ☕ [**Configurar Java e Android SDK**](docs/setup/INSTALAR_JAVA_ANDROID_FISH.md)
-- 💻 [**Comandos Úteis**](docs/setup/COMANDOS.md)
-
-## 📖 Documentação
-
-### 📚 Guias Principais
-
-- 📱 [**Como Usar Genymotion**](docs/guides/COMO_USAR_GENYMOTION.md)
-- 🚀 [**Genymotion Quick Start**](docs/guides/GENYMOTION_QUICK_START.md)
-- 📦 [**Como Gerar APK**](docs/guides/GERAR_APK.md)
-- 🎯 [**Funcionalidades Completas**](docs/guides/FUNCIONALIDADES.md)
-- 📋 [**Projeto Completo**](docs/guides/PROJETO_COMPLETO.md)
-
-### ⚙️ Funcionalidades
-
-- 🌙 [**Modo Escuro**](docs/features/MODO_ESCURO.md)
-- 📴 [**Offline First**](docs/features/OFFLINE_FIRST.md)
-- 🔔 [**Notificações**](docs/features/NOTIFICACOES.md)
-- 📊 [**Filtros de Relatórios**](docs/features/FILTROS_RELATORIOS.md)
-- ✅ [**Funcionalidade Concluir**](docs/features/FUNCIONALIDADE_CONCLUIR.md)
-
-### 🛠️ Troubleshooting
-
-- 🔧 [**Correção Erro 500**](docs/troubleshooting/CORRECAO_ERRO_500.md)
-- 🔔 [**Correção Notificações**](docs/troubleshooting/CORRECAO_NOTIFICACAO.md)
-- 🌙 [**Correções Modo Escuro**](docs/troubleshooting/CORRECOES_MODO_ESCURO.md)
-- 📱 [**Sucesso Genymotion**](docs/troubleshooting/SUCESSO_GENYMOTION.md)
-
 ## 📁 Estrutura do Projeto
 
 ```
@@ -92,12 +59,6 @@ agendafacil/
 │   ├── screens/          # Telas do aplicativo
 │   ├── theme/            # Configuração de tema Material Design 3
 │   └── types/            # Definições de tipos TypeScript
-├── docs/
-│   ├── setup/            # Guias de instalação e configuração
-│   ├── guides/           # Guias de uso do projeto
-│   ├── features/         # Documentação de funcionalidades
-│   ├── troubleshooting/  # Soluções de problemas
-│   └── archive/          # Documentação histórica
 ├── scripts/              # Scripts shell utilitários
 ├── android/              # Projeto Android nativo
 ├── assets/               # Imagens e recursos

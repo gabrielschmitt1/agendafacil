@@ -17,8 +17,6 @@ jobs:
       # Adicione este step para instalar o pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10.17.0
       
       # Adicione este step para configurar o Node.js
       - name: Setup Node.js

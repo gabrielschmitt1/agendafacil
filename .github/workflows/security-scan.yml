@@ -45,6 +45,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'library'
           severity: 'HIGH,CRITICAL'
+          trivyignores: '.trivyignore'
           
       - name: Run Trivy scanner (SARIF output for GitHub Security)
         uses: aquasecurity/trivy-action@master
@@ -57,6 +58,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'library'
           severity: 'LOW,MEDIUM,HIGH,CRITICAL'
+          trivyignores: '.trivyignore'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3

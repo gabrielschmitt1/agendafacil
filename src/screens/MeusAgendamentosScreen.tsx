@@ -76,7 +76,7 @@ export default function MeusAgendamentosScreen() {
   };
 
   const renderAgendamento = (agendamento: Agendamento) => (
-    <Card key={agendamento.id} style={styles.card}>
+    <Card key={agendamento.id} testID={`agendamento-card-${agendamento.id}`} style={styles.card}>
       <Card.Content style={styles.cardContent}>
         <Image
           source={{
@@ -100,6 +100,7 @@ export default function MeusAgendamentosScreen() {
           onDismiss={() => setMenuVisivel(null)}
           anchor={
             <IconButton
+              testID={`menu-button-${agendamento.clienteNome}`}
               icon="dots-vertical"
               size={20}
               onPress={() => setMenuVisivel(agendamento.id)}
@@ -107,18 +108,21 @@ export default function MeusAgendamentosScreen() {
           }
         >
           <Menu.Item
+            testID="menu-option-ver-detalhes"
             onPress={() => handleVerDetalhes(agendamento.id)}
             title="Ver detalhes"
             leadingIcon="eye"
           />
           {agendamento.status === 'proximo' && (
             <Menu.Item
+              testID="menu-option-concluir"
               onPress={() => handleConcluir(agendamento.id)}
               title="Concluir"
               leadingIcon="check-circle"
             />
           )}
           <Menu.Item
+            testID="menu-option-cancelar"
             onPress={() => handleCancelar(agendamento.id)}
             title="Cancelar"
             leadingIcon="close-circle"
@@ -139,8 +143,8 @@ export default function MeusAgendamentosScreen() {
           value={filtro}
           onValueChange={(value) => setFiltro(value as 'proximo' | 'passado')}
           buttons={[
-            { value: 'proximo', label: 'Próximos' },
-            { value: 'passado', label: 'Passados' },
+            { value: 'proximo', label: 'Próximos', testID: 'tab-proximos' },
+            { value: 'passado', label: 'Passados', testID: 'tab-passados' },
           ]}
           style={styles.tabs}
         />
@@ -148,6 +152,7 @@ export default function MeusAgendamentosScreen() {
 
       <View style={styles.content}>
         <Searchbar
+          testID="searchbar-agendamentos"
           placeholder="Buscar agendamentos"
           onChangeText={setBusca}
           value={busca}
@@ -161,7 +166,7 @@ export default function MeusAgendamentosScreen() {
           contentContainerStyle={styles.listContent}
         >
           {agendamentosFiltrados.length === 0 ? (
-            <View style={styles.emptyState}>
+            <View testID={`empty-state-${filtro === 'proximo' ? 'proximos' : 'passados'}`} style={styles.emptyState}>
               <Text variant="titleMedium" style={styles.emptyText}>
                 Nenhum agendamento encontrado
               </Text>
@@ -173,6 +178,7 @@ export default function MeusAgendamentosScreen() {
       </View>
 
       <FAB
+        testID="fab-novo"
         icon="plus"
         style={[styles.fab, { backgroundColor: theme.colors.primary }]}
         onPress={() => navigation.navigate('NovoAgendamento')}

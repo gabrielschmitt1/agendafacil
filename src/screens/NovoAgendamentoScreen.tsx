@@ -99,6 +99,7 @@ export default function NovoAgendamentoScreen() {
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <TextInput
+          testID="input-cliente-nome"
           label="Nome do Cliente *"
           value={clienteNome}
           onChangeText={setClienteNome}
@@ -108,6 +109,7 @@ export default function NovoAgendamentoScreen() {
         />
 
         <TextInput
+          testID="input-cliente-telefone"
           label="Telefone"
           value={clienteTelefone}
           onChangeText={setClienteTelefone}
@@ -118,6 +120,7 @@ export default function NovoAgendamentoScreen() {
         />
 
         <TextInput
+          testID="input-procedimento"
           label="Tipo de Procedimento *"
           value={procedimento}
           onChangeText={setProcedimento}
@@ -128,6 +131,7 @@ export default function NovoAgendamentoScreen() {
 
         <View style={styles.row}>
           <TextInput
+            testID="input-valor"
             label="Valor *"
             value={valor}
             onChangeText={setValor}
@@ -139,6 +143,7 @@ export default function NovoAgendamentoScreen() {
           />
 
           <TextInput
+            testID="input-custo"
             label="Custo"
             value={custo}
             onChangeText={setCusto}
@@ -152,26 +157,28 @@ export default function NovoAgendamentoScreen() {
 
         <View style={styles.row}>
           <TextInput
+            testID="input-data"
             label="Data"
             value={formatarData(data)}
             mode="outlined"
             style={[styles.input, styles.halfWidth]}
             editable={false}
-            right={<TextInput.Icon icon="calendar" onPress={() => setMostrarCalendario(true)} />}
+            right={<TextInput.Icon testID="button-calendar" icon="calendar" onPress={() => setMostrarCalendario(true)} />}
           />
 
           <TextInput
+            testID="input-hora"
             label="Hora"
             value={formatarHora(hora)}
             mode="outlined"
             style={[styles.input, styles.halfWidth]}
             editable={false}
-            right={<TextInput.Icon icon="clock-outline" onPress={() => setMostrarHorario(true)} />}
+            right={<TextInput.Icon testID="button-time" icon="clock-outline" onPress={() => setMostrarHorario(true)} />}
           />
         </View>
 
         {mostrarCalendario && (
-          <View style={[styles.calendarContainer, { backgroundColor: theme.colors.surface }]}>
+          <View testID="calendar-modal" style={[styles.calendarContainer, { backgroundColor: theme.colors.surface }]}>
             <Calendar
               onDayPress={(day) => {
                 setData(new Date(day.timestamp));
@@ -210,6 +217,7 @@ export default function NovoAgendamentoScreen() {
         {/* Modal de seleção de horário para Web */}
         <Portal>
           <Modal
+            testID="time-picker-modal"
             visible={mostrarHorario && Platform.OS === 'web'}
             onDismiss={() => setMostrarHorario(false)}
             contentContainerStyle={[styles.modalHorario, { backgroundColor: theme.colors.surface }]}
@@ -287,7 +295,7 @@ export default function NovoAgendamentoScreen() {
               <Button mode="outlined" onPress={() => setMostrarHorario(false)}>
                 Cancelar
               </Button>
-              <Button mode="contained" onPress={() => setMostrarHorario(false)}>
+              <Button testID="button-confirm-time" mode="contained" onPress={() => setMostrarHorario(false)}>
                 Confirmar
               </Button>
             </View>
@@ -296,6 +304,7 @@ export default function NovoAgendamentoScreen() {
 
         <View style={styles.section}>
           <TextInput
+            testID="select-tipo-pagamento"
             label="Tipo de Pagamento"
             value={tipoPagamento}
             mode="outlined"
@@ -306,16 +315,17 @@ export default function NovoAgendamentoScreen() {
             value={tipoPagamento}
             onValueChange={(value) => setTipoPagamento(value as Agendamento['tipoPagamento'])}
             buttons={[
-              { value: 'PIX', label: 'PIX' },
-              { value: 'Cartão de Crédito', label: 'Crédito' },
-              { value: 'Cartão de Débito', label: 'Débito' },
-              { value: 'Dinheiro', label: 'Dinheiro' },
+              { value: 'PIX', label: 'PIX', testID: 'payment-option-pix' },
+              { value: 'Cartão de Crédito', label: 'Crédito', testID: 'payment-option-credito' },
+              { value: 'Cartão de Débito', label: 'Débito', testID: 'payment-option-debito' },
+              { value: 'Dinheiro', label: 'Dinheiro', testID: 'payment-option-dinheiro' },
             ]}
             style={styles.segmented}
           />
         </View>
 
         <TextInput
+          testID="input-observacoes"
           label="Observações"
           value={observacoes}
           onChangeText={setObservacoes}
@@ -329,6 +339,7 @@ export default function NovoAgendamentoScreen() {
 
       <View style={[styles.footer, { backgroundColor: theme.colors.background }]}>
         <Button
+          testID="button-agendar"
           mode="contained"
           onPress={handleAgendar}
           style={styles.button}

@@ -52,6 +52,7 @@ function MainTabs() {
         component={NovoAgendamentoScreen}
         options={{
           tabBarLabel: 'Agendar',
+          tabBarTestID: 'tab-novo-agendamento',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="calendar-month" size={24} color={color} />
           ),
@@ -62,6 +63,7 @@ function MainTabs() {
         component={MeusAgendamentosScreen}
         options={{
           tabBarLabel: 'Meus Agendamentos',
+          tabBarTestID: 'tab-meus-agendamentos',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="clipboard-list-outline" size={24} color={color} />
           ),
@@ -72,6 +74,7 @@ function MainTabs() {
         component={RelatoriosScreen}
         options={{
           tabBarLabel: 'Relatórios',
+          tabBarTestID: 'tab-relatorios',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="chart-bar" size={24} color={color} />
           ),
@@ -82,6 +85,7 @@ function MainTabs() {
         component={ConfiguracoesScreen}
         options={{
           tabBarLabel: 'Configurações',
+          tabBarTestID: 'tab-configuracoes',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="cog-outline" size={24} color={color} />
           ),

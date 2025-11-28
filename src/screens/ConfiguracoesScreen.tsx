@@ -29,6 +29,7 @@ export default function ConfiguracoesScreen() {
             left={(props) => <List.Icon {...props} icon="bell-outline" />}
             right={() => (
               <Switch
+                testID="switch-notificacoes"
                 value={notificacoesAtivadas}
                 onValueChange={toggleNotificacoes}
               />
@@ -40,6 +41,7 @@ export default function ConfiguracoesScreen() {
             left={(props) => <List.Icon {...props} icon="clock-alert-outline" />}
             right={() => (
               <Switch
+                testID="switch-lembrete-automatico"
                 value={lembreteAutomatico}
                 onValueChange={toggleLembreteAutomatico}
                 disabled={!notificacoesAtivadas}
@@ -57,7 +59,7 @@ export default function ConfiguracoesScreen() {
             description={isDarkMode ? 'Tema escuro ativo' : 'Tema claro ativo'}
             left={(props) => <List.Icon {...props} icon="theme-light-dark" />}
             right={() => (
-              <Switch value={isDarkMode} onValueChange={toggleTheme} />
+              <Switch testID="switch-modo-escuro" value={isDarkMode} onValueChange={toggleTheme} />
             )}
           />
         </List.Section>
@@ -67,12 +69,14 @@ export default function ConfiguracoesScreen() {
         <List.Section>
           <List.Subheader>Dados e Backup</List.Subheader>
           <List.Item
+            testID="button-exportar-dados"
             title="Exportar dados"
             description="Salvar seus agendamentos em arquivo"
             left={(props) => <List.Icon {...props} icon="database-export" />}
             onPress={() => {}}
           />
           <List.Item
+            testID="button-importar-dados"
             title="Importar dados"
             description="Restaurar agendamentos de backup"
             left={(props) => <List.Icon {...props} icon="database-import" />}

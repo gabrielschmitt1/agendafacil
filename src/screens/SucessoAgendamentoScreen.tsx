@@ -61,11 +61,11 @@ export default function SucessoAgendamentoScreen() {
         </View>
 
         {/* Mensagem de sucesso */}
-        <Text variant="headlineMedium" style={[styles.title, { color: theme.colors.onBackground }]}>
+        <Text testID="text-success-title" variant="headlineMedium" style={[styles.title, { color: theme.colors.onBackground }]}>
           Agendamento Criado!
         </Text>
 
-        <Text variant="bodyLarge" style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}>
+        <Text testID="text-success-message" variant="bodyLarge" style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}>
           Seu agendamento foi criado com sucesso e a notificação foi agendada.
         </Text>
 
@@ -86,6 +86,7 @@ export default function SucessoAgendamentoScreen() {
       {/* Botões de ação */}
       <View style={styles.buttonsContainer}>
         <Button
+          testID="button-ver-agendamentos"
           mode="contained"
           onPress={handleVerAgendamentos}
           style={styles.primaryButton}
@@ -97,6 +98,7 @@ export default function SucessoAgendamentoScreen() {
         </Button>
 
         <Button
+          testID="button-novo-agendamento"
           mode="outlined"
           onPress={handleNovoAgendamento}
           style={styles.secondaryButton}

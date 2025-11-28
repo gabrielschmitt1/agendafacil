@@ -41,15 +41,15 @@ export default function RelatoriosScreen() {
             value={periodo}
             onValueChange={(value) => setPeriodo(value as PeriodoRelatorio)}
             buttons={[
-              { value: 'Semanal', label: 'Semanal' },
-              { value: 'Mensal', label: 'Mensal' },
-              { value: 'Anual', label: 'Anual' },
+              { value: 'Semanal', label: 'Semanal', testID: 'tab-semanal' },
+              { value: 'Mensal', label: 'Mensal', testID: 'tab-mensal' },
+              { value: 'Anual', label: 'Anual', testID: 'tab-anual' },
             ]}
           />
         </View>
 
         <View style={styles.cardsGrid}>
-          <Card style={[styles.metricCard, styles.primaryCard]}>
+          <Card testID="card-lucro-liquido" style={[styles.metricCard, styles.primaryCard]}>
             <Card.Content>
               <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
                 Lucro Total
@@ -60,7 +60,7 @@ export default function RelatoriosScreen() {
             </Card.Content>
           </Card>
 
-          <Card style={[styles.metricCard, styles.primaryCard]}>
+          <Card testID="card-receita-total" style={[styles.metricCard, styles.primaryCard]}>
             <Card.Content>
               <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
                 Total Vendido
@@ -71,7 +71,7 @@ export default function RelatoriosScreen() {
             </Card.Content>
           </Card>
 
-          <Card style={[styles.metricCard, styles.primaryCard, styles.fullWidth]}>
+          <Card testID="card-custo-total" style={[styles.metricCard, styles.primaryCard, styles.fullWidth]}>
             <Card.Content>
               <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
                 Custo Total

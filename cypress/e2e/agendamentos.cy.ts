@@ -1,21 +1,37 @@
-describe('Meus agendamentos', () => {
-  it('deve criar um novo agendamento com sucesso', () => {
+describe('Agendamentos - Fluxo Básico', function () {
+  beforeEach(function () {
     cy.visit('/');
-    cy.prompt([
-      "Click in Novo button",
-      "Enter nome do cliente 'Gabriel Schmitt'",
-      "Enter Telefone '61993347347'",
-      "Enter Tipo de Procedimento 'Corte de Cabelo'",
-      "Enter Valor '100'",
-      "Click on calendar button",
-      "Click on 1 day button",
-      "Click no icone de hora",
-      "Click on button 17:00 option",
-      "Click on Confirmar button",
-      "Click on Tipo de pagamento 'Credito'",
-      "Enter Observações 'Valor teste'",
-      "Click on Agendar button",
-      "Should verify page contain 'Agendamento Criado'"
-    ])
-  })
-})
+    cy.limparDados();
+  });
+
+  it('deve criar um novo agendamento com sucesso', function () {
+    cy.fixture('agendamento').then(function (dados) {
+      cy.criarAgendamento(dados.completo);
+      
+      cy.verificarTexto('Agendamento Criado!');
+      cy.verificarTexto('Seu agendamento foi criado com sucesso');
+    });
+  });
+
+  it('deve visualizar agendamento criado na lista', function () {
+    cy.fixture('agendamento').then(function (dados) {
+      cy.criarAgendamento(dados.completo);
+      cy.get('[data-testid="button-ver-agendamentos"]').click();
+      
+      cy.verificarTexto(dados.completo.clienteNome);
+      cy.verificarTexto(dados.completo.procedimento);
+    });
+  });
+
+  it('deve concluir agendamento e verificar em passados', function () {
+    cy.fixture('agendamento').then(function (dados) {
+      cy.criarAgendamento(dados.completo);
+      cy.get('[data-testid="button-ver-agendamentos"]').click();
+      
+      cy.concluirAgendamento(dados.completo.clienteNome);
+      
+      cy.filtrarAgendamentos('passado');
+      cy.verificarTexto(dados.completo.clienteNome);
+    });
+  });
+});

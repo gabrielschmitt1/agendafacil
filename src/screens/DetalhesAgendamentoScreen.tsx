@@ -123,7 +123,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Nome
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-cliente-nome" variant="bodyMedium" style={styles.value}>
                 {agendamento.clienteNome}
               </Text>
             </View>
@@ -132,7 +132,7 @@ export default function DetalhesAgendamentoScreen() {
                 <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                   Telefone
                 </Text>
-                <Text variant="bodyMedium" style={styles.value}>
+                <Text testID="text-cliente-telefone" variant="bodyMedium" style={styles.value}>
                   {agendamento.clienteTelefone}
                 </Text>
               </View>
@@ -151,7 +151,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Data
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-data" variant="bodyMedium" style={styles.value}>
                 {formatarData(agendamento.data)}
               </Text>
             </View>
@@ -159,7 +159,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Horário
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-hora" variant="bodyMedium" style={styles.value}>
                 {agendamento.hora}
               </Text>
             </View>
@@ -167,7 +167,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Procedimento
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-procedimento" variant="bodyMedium" style={styles.value}>
                 {agendamento.procedimento}
               </Text>
             </View>
@@ -175,7 +175,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Valor Recebido
               </Text>
-              <Text variant="bodyMedium" style={[styles.value, styles.primaryColor, { color: theme.colors.primary }]}>
+              <Text testID="text-valor" variant="bodyMedium" style={[styles.value, styles.primaryColor, { color: theme.colors.primary }]}>
                 {formatarValor(agendamento.valor)}
               </Text>
             </View>
@@ -193,7 +193,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Custo
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-custo" variant="bodyMedium" style={styles.value}>
                 {formatarValor(agendamento.custo)}
               </Text>
             </View>
@@ -201,7 +201,7 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
                 Tipo de Pagamento
               </Text>
-              <Text variant="bodyMedium" style={styles.value}>
+              <Text testID="text-tipo-pagamento" variant="bodyMedium" style={styles.value}>
                 {agendamento.tipoPagamento}
               </Text>
             </View>
@@ -235,6 +235,7 @@ export default function DetalhesAgendamentoScreen() {
 
       <View style={[styles.footer, { backgroundColor: theme.colors.background }]}>
         <Button
+          testID="button-editar"
           mode="contained-tonal"
           onPress={handleEditar}
           style={[styles.button, styles.editButton]}
@@ -243,6 +244,7 @@ export default function DetalhesAgendamentoScreen() {
           Editar
         </Button>
         <Button
+          testID="button-cancelar"
           mode="contained"
           onPress={handleCancelar}
           style={[styles.button, styles.cancelButton]}
@@ -340,7 +342,7 @@ export default function DetalhesAgendamentoScreen() {
               <Button mode="outlined" onPress={() => setModalEditarVisivel(false)}>
                 Cancelar
               </Button>
-              <Button mode="contained" onPress={handleSalvarEdicao}>
+              <Button testID="button-salvar" mode="contained" onPress={handleSalvarEdicao}>
                 Salvar
               </Button>
             </View>

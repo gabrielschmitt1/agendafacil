@@ -1,6 +1,6 @@
 # AgendaFácil
 
-Sistema de agendamento de clientes para profissionais autônomos e pequenos negócios 
+Sistema de agendamento de clientes para profissionais autônomos e pequenos negócios
 
 ## 📱 Sobre o Projeto
 
@@ -22,6 +22,7 @@ O AgendaFácil é um aplicativo mobile desenvolvido em React Native que permite 
 ## 🎨 Design
 
 O aplicativo segue as diretrizes do Material Design 3 (Material You) com:
+
 - Interface moderna e intuitiva
 - Tema customizável com cores primárias em azul (#13a4ec)
 - Componentes do React Native Paper
@@ -70,6 +71,7 @@ agendafacil/
 ## 🎯 Telas do Aplicativo
 
 ### 1. Novo Agendamento
+
 - Formulário completo para criar novos agendamentos
 - Seleção de data com calendário visual
 - Seleção de horário
@@ -77,24 +79,28 @@ agendafacil/
 - Campo de observações
 
 ### 2. Meus Agendamentos
+
 - Lista de agendamentos com filtros (Próximos/Passados)
 - Busca por nome do cliente ou procedimento
 - Cards com informações resumidas
 - Menu de opções (Ver detalhes, Cancelar)
 
 ### 3. Detalhes do Agendamento
+
 - Visualização completa das informações
 - Cálculo automático do lucro
 - Opções para editar ou cancelar
 - Seções organizadas (Cliente, Agendamento, Financeiro, Observações)
 
 ### 4. Relatórios
+
 - Resumo financeiro com métricas principais
 - Filtros por período (Semanal, Mensal, Anual)
 - Gráficos de vendas por tipo de pagamento
 - Cards com lucro total, vendas e custos
 
 ### 5. Configurações
+
 - Gerenciamento de notificações
 - Alternância entre tema claro/escuro
 - Opções de backup e exportação de dados
@@ -106,9 +112,9 @@ Para personalizar as cores do tema, edite o arquivo `src/theme/theme.ts`:
 
 ```typescript
 const customColors = {
-  primary: '#13a4ec',    // Cor primária
-  secondary: '#64B5F6',  // Cor secundária
-  tertiary: '#81C784',   // Cor terciária
+  primary: '#13a4ec', // Cor primária
+  secondary: '#64B5F6', // Cor secundária
+  tertiary: '#81C784', // Cor terciária
   // ... outras cores
 };
 ```
@@ -116,6 +122,7 @@ const customColors = {
 ## 🔄 Gerenciamento de Estado
 
 O aplicativo utiliza:
+
 - **Context API** para estado global
 - **AsyncStorage** para persistência local
 - **Offline-first**: Todos os dados são salvos localmente primeiro
@@ -135,4 +142,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 ---
 
 **AgendaFácil** - Simplifique seus agendamentos! 📅✨
-

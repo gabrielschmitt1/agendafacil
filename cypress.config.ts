@@ -1,9 +1,9 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  projectId: "8x71uo",
+  projectId: '8x71uo',
   e2e: {
-    baseUrl: "http://localhost:8081",
+    baseUrl: 'http://localhost:8081',
     testIsolation: true,
     viewportWidth: 430,
     viewportHeight: 932,

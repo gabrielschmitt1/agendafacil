@@ -8,7 +8,7 @@ describe('Tela de Sucesso', function () {
     it('deve exibir mensagem de sucesso após criar agendamento', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.minimo);
-        
+
         cy.verificarTexto('Agendamento Criado!');
         cy.verificarTexto('Seu agendamento foi criado com sucesso');
         cy.verificarTexto('Você receberá uma notificação antes do horário do agendamento');
@@ -18,7 +18,7 @@ describe('Tela de Sucesso', function () {
     it('deve exibir elementos de sucesso', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.minimo);
-        
+
         cy.verificarElemento('text-success-title');
         cy.verificarElemento('text-success-message');
       });
@@ -29,7 +29,7 @@ describe('Tela de Sucesso', function () {
     it('deve exibir e usar botões de navegação', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.minimo);
-        
+
         cy.verificarElemento('button-ver-agendamentos');
         cy.verificarElemento('button-novo-agendamento');
       });
@@ -58,13 +58,13 @@ describe('Tela de Sucesso', function () {
         // Primeiro
         cy.criarAgendamento(dados.minimo);
         cy.verificarTexto('Agendamento Criado!');
-        
+
         // Criar outro
         cy.get('[data-testid="button-novo-agendamento"]').click();
         cy.preencherFormularioAgendamento(dados.semTelefone);
         cy.get('[data-testid="button-agendar"]').click();
         cy.verificarTexto('Agendamento Criado!');
-        
+
         // Verificar ambos na lista
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.verificarTexto(dados.minimo.clienteNome);

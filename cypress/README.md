@@ -20,6 +20,7 @@ Suite completa de testes end-to-end utilizando Cypress para o aplicativo AgendaF
 Localização: `cypress/support/commands.ts`
 
 Commands disponíveis:
+
 - `cy.limparDados()` - Limpa dados do AsyncStorage
 - `cy.preencherFormularioAgendamento(dados)` - Preenche formulário de agendamento
 - `cy.criarAgendamento(dados)` - Cria um agendamento completo
@@ -56,6 +57,7 @@ Localização: `cypress/fixtures/`
 ## Cobertura de Testes
 
 ### Alta Prioridade (P0) ✅
+
 - ✅ Criar agendamento com sucesso
 - ✅ Tela de sucesso
 - ✅ Listar agendamentos
@@ -64,6 +66,7 @@ Localização: `cypress/fixtures/`
 - ✅ Cancelar agendamento
 
 ### Média Prioridade (P1) ✅
+
 - ✅ Busca de agendamentos
 - ✅ Editar agendamento
 - ✅ Concluir agendamento
@@ -71,6 +74,7 @@ Localização: `cypress/fixtures/`
 - ✅ Validações de formulário
 
 ### Baixa Prioridade (P2) ✅
+
 - ✅ Relatórios por período
 - ✅ Configurações completas
 - ✅ Fluxo completo end-to-end
@@ -79,6 +83,7 @@ Localização: `cypress/fixtures/`
 ## Como Executar
 
 ### Executar todos os testes
+
 ```bash
 npm run cypress:open
 # ou
@@ -86,6 +91,7 @@ npx cypress open
 ```
 
 ### Executar testes específicos
+
 ```bash
 # Apenas testes de novo agendamento
 npx cypress run --spec "cypress/e2e/novo-agendamento.cy.ts"
@@ -98,6 +104,7 @@ npx cypress run --spec "cypress/e2e/fluxo-completo.cy.ts"
 ```
 
 ### Executar em modo headless
+
 ```bash
 npm run cypress:run
 # ou
@@ -107,6 +114,7 @@ npx cypress run
 ## Cenários de Teste
 
 ### 1. Novo Agendamento (113 testes)
+
 - Criação com campos obrigatórios
 - Criação com todos os campos
 - Seleção de data e hora
@@ -115,12 +123,14 @@ npx cypress run
 - Estados do formulário
 
 ### 2. Tela de Sucesso (21 testes)
+
 - Exibição da mensagem
 - Navegação para outras telas
 - Animações
 - Criação sequencial de agendamentos
 
 ### 3. Meus Agendamentos (68 testes)
+
 - Navegação e interface
 - Busca por nome e procedimento
 - Filtros de status
@@ -129,6 +139,7 @@ npx cypress run
 - Múltiplos agendamentos
 
 ### 4. Detalhes do Agendamento (48 testes)
+
 - Visualização de todas as informações
 - Edição de campos
 - Cancelamento
@@ -136,6 +147,7 @@ npx cypress run
 - Múltiplas edições
 
 ### 5. Relatórios (54 testes)
+
 - Visualização de métricas
 - Gráficos de vendas por pagamento
 - Filtros de período
@@ -143,6 +155,7 @@ npx cypress run
 - Formatação de valores
 
 ### 6. Configurações (42 testes)
+
 - Notificações
 - Modo escuro
 - Dados e backup
@@ -150,6 +163,7 @@ npx cypress run
 - Dependências entre configurações
 
 ### 7. Fluxo Completo (16 testes)
+
 - Ciclo completo de agendamento
 - Múltiplos agendamentos
 - Integração com configurações
@@ -177,15 +191,18 @@ npx cypress run
 ## Troubleshooting
 
 ### Testes falhando por timeout
+
 - Aumentar timeout no `cypress.config.ts`
 - Verificar se a aplicação está rodando
 - Verificar conexão com a aplicação
 
 ### Dados não persistindo
+
 - Verificar `cy.limparDados()` está sendo chamado corretamente
 - Verificar AsyncStorage está funcionando
 
 ### Comandos customizados não encontrados
+
 - Verificar importação em `cypress/support/e2e.ts`
 - Verificar tipos em `commands.ts`
 
@@ -198,4 +215,3 @@ npx cypress run
 - [ ] Screenshots automáticos em falhas
 - [ ] Vídeos dos testes
 - [ ] Relatórios de cobertura
-

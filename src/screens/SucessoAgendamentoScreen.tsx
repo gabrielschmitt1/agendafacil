@@ -11,7 +11,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function SucessoAgendamentoScreen() {
   const theme = useTheme();
   const navigation = useNavigation<NavigationProp>();
-  
+
   const fadeAnim = new Animated.Value(0);
   const scaleAnim = new Animated.Value(0);
 
@@ -53,19 +53,23 @@ export default function SucessoAgendamentoScreen() {
       >
         {/* Ícone de sucesso com círculo */}
         <View style={[styles.iconContainer, { backgroundColor: theme.colors.primaryContainer }]}>
-          <MaterialCommunityIcons
-            name="check-circle"
-            size={80}
-            color={theme.colors.primary}
-          />
+          <MaterialCommunityIcons name="check-circle" size={80} color={theme.colors.primary} />
         </View>
 
         {/* Mensagem de sucesso */}
-        <Text testID="text-success-title" variant="headlineMedium" style={[styles.title, { color: theme.colors.onBackground }]}>
+        <Text
+          testID="text-success-title"
+          variant="headlineMedium"
+          style={[styles.title, { color: theme.colors.onBackground }]}
+        >
           Agendamento Criado!
         </Text>
 
-        <Text testID="text-success-message" variant="bodyLarge" style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}>
+        <Text
+          testID="text-success-message"
+          variant="bodyLarge"
+          style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}
+        >
           Seu agendamento foi criado com sucesso e a notificação foi agendada.
         </Text>
 
@@ -77,7 +81,10 @@ export default function SucessoAgendamentoScreen() {
             color={theme.colors.primary}
             style={styles.infoIcon}
           />
-          <Text variant="bodyMedium" style={[styles.infoText, { color: theme.colors.onSurfaceVariant }]}>
+          <Text
+            variant="bodyMedium"
+            style={[styles.infoText, { color: theme.colors.onSurfaceVariant }]}
+          >
             Você receberá uma notificação antes do horário do agendamento
           </Text>
         </View>
@@ -177,4 +184,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-

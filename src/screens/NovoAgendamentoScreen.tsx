@@ -61,10 +61,10 @@ export default function NovoAgendamentoScreen() {
     try {
       // Adicionar agendamento e receber o objeto com ID
       const agendamentoCriado = await adicionarAgendamento(novoAgendamento);
-      
+
       // Agendar notificação com o agendamento que tem ID
       await agendarNotificacao(agendamentoCriado);
-      
+
       // Limpar formulário
       setClienteNome('');
       setClienteTelefone('');
@@ -74,7 +74,7 @@ export default function NovoAgendamentoScreen() {
       setObservacoes('');
       setData(new Date());
       setHora(new Date());
-      
+
       // Navegar para a tela de sucesso
       navigation.navigate('SucessoAgendamento');
     } catch (error) {
@@ -163,7 +163,13 @@ export default function NovoAgendamentoScreen() {
             mode="outlined"
             style={[styles.input, styles.halfWidth]}
             editable={false}
-            right={<TextInput.Icon testID="button-calendar" icon="calendar" onPress={() => setMostrarCalendario(true)} />}
+            right={
+              <TextInput.Icon
+                testID="button-calendar"
+                icon="calendar"
+                onPress={() => setMostrarCalendario(true)}
+              />
+            }
           />
 
           <TextInput
@@ -173,12 +179,21 @@ export default function NovoAgendamentoScreen() {
             mode="outlined"
             style={[styles.input, styles.halfWidth]}
             editable={false}
-            right={<TextInput.Icon testID="button-time" icon="clock-outline" onPress={() => setMostrarHorario(true)} />}
+            right={
+              <TextInput.Icon
+                testID="button-time"
+                icon="clock-outline"
+                onPress={() => setMostrarHorario(true)}
+              />
+            }
           />
         </View>
 
         {mostrarCalendario && (
-          <View testID="calendar-modal" style={[styles.calendarContainer, { backgroundColor: theme.colors.surface }]}>
+          <View
+            testID="calendar-modal"
+            style={[styles.calendarContainer, { backgroundColor: theme.colors.surface }]}
+          >
             <Calendar
               onDayPress={(day) => {
                 setData(new Date(day.timestamp));
@@ -225,10 +240,12 @@ export default function NovoAgendamentoScreen() {
             <Text variant="titleLarge" style={styles.modalTitle}>
               Selecione o Horário
             </Text>
-            
+
             <View style={styles.timePickerContainer}>
               <View style={styles.timeInputGroup}>
-                <Text variant="labelLarge" style={styles.timeLabel}>Hora:</Text>
+                <Text variant="labelLarge" style={styles.timeLabel}>
+                  Hora:
+                </Text>
                 <TextInput
                   value={hora.getHours().toString().padStart(2, '0')}
                   onChangeText={(text) => {
@@ -245,11 +262,15 @@ export default function NovoAgendamentoScreen() {
                   mode="outlined"
                 />
               </View>
-              
-              <Text variant="headlineMedium" style={styles.timeSeparator}>:</Text>
-              
+
+              <Text variant="headlineMedium" style={styles.timeSeparator}>
+                :
+              </Text>
+
               <View style={styles.timeInputGroup}>
-                <Text variant="labelLarge" style={styles.timeLabel}>Minuto:</Text>
+                <Text variant="labelLarge" style={styles.timeLabel}>
+                  Minuto:
+                </Text>
                 <TextInput
                   value={hora.getMinutes().toString().padStart(2, '0')}
                   onChangeText={(text) => {
@@ -270,24 +291,31 @@ export default function NovoAgendamentoScreen() {
 
             {/* Atalhos de horário */}
             <View style={styles.timeShortcuts}>
-              <Text variant="labelMedium" style={[styles.shortcutsLabel, { color: theme.colors.onSurfaceVariant }]}>Horários Comuns:</Text>
+              <Text
+                variant="labelMedium"
+                style={[styles.shortcutsLabel, { color: theme.colors.onSurfaceVariant }]}
+              >
+                Horários Comuns:
+              </Text>
               <View style={styles.shortcutsButtons}>
-                {['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'].map((time) => (
-                  <Button
-                    key={time}
-                    mode="outlined"
-                    onPress={() => {
-                      const [hours, minutes] = time.split(':').map(Number);
-                      const newDate = new Date(hora);
-                      newDate.setHours(hours, minutes);
-                      setHora(newDate);
-                    }}
-                    style={styles.shortcutButton}
-                    compact
-                  >
-                    {time}
-                  </Button>
-                ))}
+                {['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'].map(
+                  (time) => (
+                    <Button
+                      key={time}
+                      mode="outlined"
+                      onPress={() => {
+                        const [hours, minutes] = time.split(':').map(Number);
+                        const newDate = new Date(hora);
+                        newDate.setHours(hours, minutes);
+                        setHora(newDate);
+                      }}
+                      style={styles.shortcutButton}
+                      compact
+                    >
+                      {time}
+                    </Button>
+                  )
+                )}
               </View>
             </View>
 
@@ -295,7 +323,11 @@ export default function NovoAgendamentoScreen() {
               <Button mode="outlined" onPress={() => setMostrarHorario(false)}>
                 Cancelar
               </Button>
-              <Button testID="button-confirm-time" mode="contained" onPress={() => setMostrarHorario(false)}>
+              <Button
+                testID="button-confirm-time"
+                mode="contained"
+                onPress={() => setMostrarHorario(false)}
+              >
                 Confirmar
               </Button>
             </View>
@@ -454,4 +486,3 @@ const styles = StyleSheet.create({
     gap: 12,
   },
 });
-

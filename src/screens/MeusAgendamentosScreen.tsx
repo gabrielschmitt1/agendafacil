@@ -36,8 +36,9 @@ export default function MeusAgendamentosScreen() {
   const [menuVisivel, setMenuVisivel] = useState<string | null>(null);
 
   const agendamentosFiltrados = agendamentos.filter((a) => {
-    const matchBusca = a.clienteNome.toLowerCase().includes(busca.toLowerCase()) ||
-                       a.procedimento.toLowerCase().includes(busca.toLowerCase());
+    const matchBusca =
+      a.clienteNome.toLowerCase().includes(busca.toLowerCase()) ||
+      a.procedimento.toLowerCase().includes(busca.toLowerCase());
     const matchFiltro = a.status === filtro;
     return matchBusca && matchFiltro;
   });
@@ -91,7 +92,10 @@ export default function MeusAgendamentosScreen() {
           <Text variant="bodySmall" style={[styles.data, { color: theme.colors.onSurfaceVariant }]}>
             {formatarData(agendamento.data)} · {agendamento.hora}
           </Text>
-          <Text variant="bodySmall" style={[styles.procedimento, { color: theme.colors.onSurfaceVariant }]}>
+          <Text
+            variant="bodySmall"
+            style={[styles.procedimento, { color: theme.colors.onSurfaceVariant }]}
+          >
             {agendamento.procedimento} · {formatarValor(agendamento.valor)}
           </Text>
         </View>
@@ -166,7 +170,10 @@ export default function MeusAgendamentosScreen() {
           contentContainerStyle={styles.listContent}
         >
           {agendamentosFiltrados.length === 0 ? (
-            <View testID={`empty-state-${filtro === 'proximo' ? 'proximos' : 'passados'}`} style={styles.emptyState}>
+            <View
+              testID={`empty-state-${filtro === 'proximo' ? 'proximos' : 'passados'}`}
+              style={styles.emptyState}
+            >
               <Text variant="titleMedium" style={styles.emptyText}>
                 Nenhum agendamento encontrado
               </Text>
@@ -256,4 +263,3 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
-

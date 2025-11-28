@@ -23,4 +23,3 @@ export type ResumoFinanceiro = {
 };
 
 export type PeriodoRelatorio = 'Semanal' | 'Mensal' | 'Anual';
-

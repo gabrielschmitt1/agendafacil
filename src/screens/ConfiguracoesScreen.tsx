@@ -7,12 +7,8 @@ import { useNotifications } from '../contexts/NotificationContext';
 export default function ConfiguracoesScreen() {
   const theme = useTheme();
   const { isDarkMode, toggleTheme } = useThemeContext();
-  const { 
-    notificacoesAtivadas, 
-    lembreteAutomatico, 
-    toggleNotificacoes, 
-    toggleLembreteAutomatico 
-  } = useNotifications();
+  const { notificacoesAtivadas, lembreteAutomatico, toggleNotificacoes, toggleLembreteAutomatico } =
+    useNotifications();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
@@ -120,4 +116,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-

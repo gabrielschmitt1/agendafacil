@@ -35,7 +35,7 @@ describe('Meus Agendamentos', function () {
         cy.criarAgendamento(dados.completo);
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.abrirMenuAgendamento(dados.completo.clienteNome);
-        
+
         cy.verificarTexto('Ver detalhes');
         cy.verificarTexto('Concluir');
         cy.verificarTexto('Cancelar');
@@ -52,7 +52,7 @@ describe('Meus Agendamentos', function () {
         cy.preencherFormularioAgendamento(agendamentos[1]);
         cy.get('[data-testid="button-agendar"]').click();
         cy.get('[data-testid="button-ver-agendamentos"]').click();
-        
+
         // Buscar primeiro
         cy.buscarAgendamento(agendamentos[0].clienteNome);
         cy.verificarTexto(agendamentos[0].clienteNome);
@@ -65,9 +65,9 @@ describe('Meus Agendamentos', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.completo);
         cy.get('[data-testid="button-ver-agendamentos"]').click();
-        
+
         cy.concluirAgendamento(dados.completo.clienteNome);
-        
+
         cy.filtrarAgendamentos('passado');
         cy.verificarTexto(dados.completo.clienteNome);
       });
@@ -77,7 +77,7 @@ describe('Meus Agendamentos', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.completo);
         cy.get('[data-testid="button-ver-agendamentos"]').click();
-        
+
         cy.verDetalhesAgendamento(dados.completo.clienteNome);
         cy.verificarTexto('Informações do Cliente');
       });
@@ -92,7 +92,7 @@ describe('Meus Agendamentos', function () {
         cy.preencherFormularioAgendamento(agendamentos[1]);
         cy.get('[data-testid="button-agendar"]').click();
         cy.get('[data-testid="button-ver-agendamentos"]').click();
-        
+
         cy.verificarTexto(agendamentos[0].clienteNome);
         cy.verificarTexto(agendamentos[1].clienteNome);
       });

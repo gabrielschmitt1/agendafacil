@@ -5,6 +5,7 @@
 ## 🔗 Issue Relacionada
 
 <!-- Link para a issue, se houver -->
+
 Closes #
 
 ## 🧪 Tipo de Mudança
@@ -33,4 +34,3 @@ Closes #
 ## 📝 Notas Adicionais
 
 <!-- Informações extras para os revisores -->
-

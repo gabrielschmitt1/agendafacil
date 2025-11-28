@@ -26,7 +26,6 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    'react-native/react-native': true,
   },
   rules: {
     // React
@@ -40,6 +39,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-require-imports': 'off',
+    '@typescript-eslint/no-namespace': 'off', // Necessário para Cypress type declarations
 
     // General
     'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -58,4 +58,3 @@ module.exports = {
     'metro.config.js',
   ],
 };
-

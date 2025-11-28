@@ -37,13 +37,13 @@ export default function DetalhesAgendamentoScreen() {
   const agendamento = agendamentos.find((a) => a.id === route.params.agendamentoId);
 
   if (!agendamento) {
-  return (
-    <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <View style={styles.emptyState}>
-        <Text>Agendamento não encontrado</Text>
+    return (
+      <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
+        <View style={styles.emptyState}>
+          <Text>Agendamento não encontrado</Text>
+        </View>
       </View>
-    </View>
-  );
+    );
   }
 
   const formatarData = (data: Date) => {
@@ -87,26 +87,22 @@ export default function DetalhesAgendamentoScreen() {
   };
 
   const handleCancelar = () => {
-    Alert.alert(
-      'Cancelar Agendamento',
-      'Tem certeza que deseja cancelar este agendamento?',
-      [
-        { text: 'Não', style: 'cancel' },
-        {
-          text: 'Sim',
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await cancelarAgendamento(agendamento.id);
-              navigation.goBack();
-            } catch (error) {
-              Alert.alert('❌ Erro', 'Não foi possível cancelar o agendamento.');
-              console.error(error);
-            }
-          },
+    Alert.alert('Cancelar Agendamento', 'Tem certeza que deseja cancelar este agendamento?', [
+      { text: 'Não', style: 'cancel' },
+      {
+        text: 'Sim',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await cancelarAgendamento(agendamento.id);
+            navigation.goBack();
+          } catch (error) {
+            Alert.alert('❌ Erro', 'Não foi possível cancelar o agendamento.');
+            console.error(error);
+          }
         },
-      ]
-    );
+      },
+    ]);
   };
 
   return (
@@ -120,7 +116,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Nome
               </Text>
               <Text testID="text-cliente-nome" variant="bodyMedium" style={styles.value}>
@@ -129,7 +128,10 @@ export default function DetalhesAgendamentoScreen() {
             </View>
             {agendamento.clienteTelefone && (
               <View style={styles.row}>
-                <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+                <Text
+                  variant="bodyMedium"
+                  style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+                >
                   Telefone
                 </Text>
                 <Text testID="text-cliente-telefone" variant="bodyMedium" style={styles.value}>
@@ -148,7 +150,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Data
               </Text>
               <Text testID="text-data" variant="bodyMedium" style={styles.value}>
@@ -156,7 +161,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Horário
               </Text>
               <Text testID="text-hora" variant="bodyMedium" style={styles.value}>
@@ -164,7 +172,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Procedimento
               </Text>
               <Text testID="text-procedimento" variant="bodyMedium" style={styles.value}>
@@ -172,10 +183,17 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Valor Recebido
               </Text>
-              <Text testID="text-valor" variant="bodyMedium" style={[styles.value, styles.primaryColor, { color: theme.colors.primary }]}>
+              <Text
+                testID="text-valor"
+                variant="bodyMedium"
+                style={[styles.value, styles.primaryColor, { color: theme.colors.primary }]}
+              >
                 {formatarValor(agendamento.valor)}
               </Text>
             </View>
@@ -190,7 +208,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Custo
               </Text>
               <Text testID="text-custo" variant="bodyMedium" style={styles.value}>
@@ -198,7 +219,10 @@ export default function DetalhesAgendamentoScreen() {
               </Text>
             </View>
             <View style={styles.row}>
-              <Text variant="bodyMedium" style={[styles.label, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.label, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Tipo de Pagamento
               </Text>
               <Text testID="text-tipo-pagamento" variant="bodyMedium" style={styles.value}>
@@ -210,7 +234,10 @@ export default function DetalhesAgendamentoScreen() {
               <Text variant="bodyMedium" style={[styles.label, styles.bold]}>
                 Lucro Total
               </Text>
-              <Text variant="bodyMedium" style={[styles.value, styles.bold, styles.successColor, { color: '#4CAF50' }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.value, styles.bold, styles.successColor, { color: '#4CAF50' }]}
+              >
                 {formatarValor(lucroTotal)}
               </Text>
             </View>
@@ -225,7 +252,10 @@ export default function DetalhesAgendamentoScreen() {
                   📝 Observações
                 </Text>
               </View>
-              <Text variant="bodyMedium" style={[styles.observacoes, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.observacoes, { color: theme.colors.onSurfaceVariant }]}
+              >
                 {agendamento.observacoes}
               </Text>
             </Card.Content>
@@ -452,4 +482,3 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 });
-

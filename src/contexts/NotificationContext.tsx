@@ -136,7 +136,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       // Calcular data/hora do agendamento
       // A data pode vir como Date ou string, precisamos lidar com ambos
       let dataAgendamento: Date;
-      
+
       if (agendamento.data instanceof Date) {
         // Se já é um Date, usar diretamente
         const [hora, minuto] = agendamento.hora.split(':').map(Number);
@@ -148,7 +148,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         const [hora, minuto] = agendamento.hora.split(':').map(Number);
         dataAgendamento = new Date(ano, mes - 1, dia, hora, minuto);
       }
-      
+
       // Calcular 1 hora antes
       const dataNotificacao = new Date(dataAgendamento.getTime() - 60 * 60 * 1000);
 
@@ -176,13 +176,12 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         },
       });
 
-      console.log(`✅ Notificação agendada: ${notificationId} para ${dataNotificacao.toLocaleString('pt-BR')}`);
-      
-      // Salvar ID da notificação associado ao agendamento
-      await AsyncStorage.setItem(
-        `@agendafacil:notification:${agendamento.id}`,
-        notificationId
+      console.log(
+        `✅ Notificação agendada: ${notificationId} para ${dataNotificacao.toLocaleString('pt-BR')}`
       );
+
+      // Salvar ID da notificação associado ao agendamento
+      await AsyncStorage.setItem(`@agendafacil:notification:${agendamento.id}`, notificationId);
     } catch (error) {
       console.error('Erro ao agendar notificação:', error);
     }
@@ -237,4 +236,3 @@ export const useNotifications = () => {
   }
   return context;
 };
-

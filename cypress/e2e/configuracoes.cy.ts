@@ -55,10 +55,10 @@ describe('Configurações', function () {
     it('deve persistir preferência de tema após navegar', function () {
       cy.alternarModoEscuro();
       cy.verificarTexto('Tema escuro ativo');
-      
+
       cy.navegarParaAba('MeusAgendamentos');
       cy.navegarParaAba('Configuracoes');
-      
+
       cy.verificarTexto('Tema escuro ativo');
     });
   });
@@ -81,10 +81,10 @@ describe('Configurações', function () {
     it('deve manter tema escuro após recarregar página', function () {
       cy.alternarModoEscuro();
       cy.verificarTexto('Tema escuro ativo');
-      
+
       cy.visit('/');
       cy.navegarParaAba('Configuracoes');
-      
+
       cy.verificarTexto('Tema escuro ativo');
     });
   });

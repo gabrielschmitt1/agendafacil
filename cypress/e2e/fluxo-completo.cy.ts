@@ -10,18 +10,18 @@ describe('Fluxos E2E Completos', function () {
         // 1. Criar agendamento
         cy.criarAgendamento(dados.completo);
         cy.verificarTexto('Agendamento Criado!');
-        
+
         // 2. Ver na lista
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.verificarTexto(dados.completo.clienteNome);
-        
+
         // 3. Concluir
         cy.concluirAgendamento(dados.completo.clienteNome);
-        
+
         // 4. Verificar em passados
         cy.filtrarAgendamentos('passado');
         cy.verificarTexto(dados.completo.clienteNome);
-        
+
         // 5. Ver no relatório
         cy.navegarParaAba('Relatorios');
         cy.verificarTexto('Lucro Total');
@@ -37,15 +37,15 @@ describe('Fluxos E2E Completos', function () {
         cy.get('[data-testid="button-novo-agendamento"]').click();
         cy.preencherFormularioAgendamento(agendamentos[1]);
         cy.get('[data-testid="button-agendar"]').click();
-        
+
         // Verificar na lista
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.verificarTexto(agendamentos[0].clienteNome);
         cy.verificarTexto(agendamentos[1].clienteNome);
-        
+
         // Concluir um
         cy.concluirAgendamento(agendamentos[0].clienteNome);
-        
+
         // Verificar divisão
         cy.filtrarAgendamentos('passado');
         cy.verificarTexto(agendamentos[0].clienteNome);
@@ -59,7 +59,7 @@ describe('Fluxos E2E Completos', function () {
       cy.navegarParaAba('Configuracoes');
       cy.alternarModoEscuro();
       cy.verificarTexto('Tema escuro ativo');
-      
+
       // Criar agendamento
       cy.fixture('agendamento').then(function (dados) {
         cy.criarAgendamento(dados.completo);
@@ -74,11 +74,11 @@ describe('Fluxos E2E Completos', function () {
         cy.criarAgendamento(dados.completo);
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.verificarTexto(dados.completo.clienteNome);
-        
+
         // Recarregar
         cy.reload();
         cy.navegarParaAba('MeusAgendamentos');
-        
+
         cy.verificarTexto(dados.completo.clienteNome);
       });
     });
@@ -90,15 +90,15 @@ describe('Fluxos E2E Completos', function () {
         // Criar agendamento
         cy.criarAgendamento(dados.completo);
         cy.verificarTexto('Agendamento Criado!');
-        
+
         // Meus Agendamentos
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.verificarTexto('Meus Agendamentos');
-        
+
         // Relatórios
         cy.navegarParaAba('Relatorios');
         cy.verificarTexto('Relatórios');
-        
+
         // Configurações
         cy.navegarParaAba('Configuracoes');
         cy.verificarTexto('Configurações');

@@ -30,7 +30,7 @@ describe('Novo Agendamento', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.preencherFormularioAgendamento(dados.minimo);
         cy.get('[data-testid="button-agendar"]').click();
-        
+
         // Verificar tela de sucesso
         cy.verificarTexto('Agendamento Criado!');
       });
@@ -40,7 +40,7 @@ describe('Novo Agendamento', function () {
       cy.fixture('agendamento').then(function (dados) {
         cy.preencherFormularioAgendamento(dados.completo);
         cy.get('[data-testid="button-agendar"]').click();
-        
+
         cy.verificarTexto('Agendamento Criado!');
         cy.verificarTexto('Seu agendamento foi criado com sucesso');
       });
@@ -49,22 +49,22 @@ describe('Novo Agendamento', function () {
     it('deve criar agendamentos com diferentes tipos de pagamento', function () {
       cy.fixture('agendamento').then(function (dados) {
         const pagamentos = ['PIX', 'Cartão de Crédito', 'Cartão de Débito', 'Dinheiro'] as const;
-        
+
         pagamentos.forEach(function (pagamento, index) {
           if (index > 0) {
             cy.navegarParaAba('NovoAgendamento');
           }
-          
-          const agendamento = { 
-            ...dados.minimo, 
+
+          const agendamento = {
+            ...dados.minimo,
             clienteNome: `Cliente ${pagamento}`,
-            tipoPagamento: pagamento 
+            tipoPagamento: pagamento,
           };
-          
+
           cy.preencherFormularioAgendamento(agendamento);
           cy.get('[data-testid="button-agendar"]').click();
           cy.verificarTexto('Agendamento Criado!');
-          
+
           if (index < pagamentos.length - 1) {
             cy.get('[data-testid="button-novo-agendamento"]').click();
           }
@@ -78,7 +78,7 @@ describe('Novo Agendamento', function () {
       cy.get('[data-testid="input-procedimento"]').type('Corte de Cabelo');
       cy.get('[data-testid="input-valor"]').type('80');
       cy.get('[data-testid="button-agendar"]').click();
-      
+
       cy.verificarAlert('Por favor, preencha todos os campos obrigatórios');
     });
 
@@ -86,7 +86,7 @@ describe('Novo Agendamento', function () {
       cy.get('[data-testid="input-cliente-nome"]').type('João Silva');
       cy.get('[data-testid="input-valor"]').type('80');
       cy.get('[data-testid="button-agendar"]').click();
-      
+
       cy.verificarAlert('Por favor, preencha todos os campos obrigatórios');
     });
 
@@ -94,13 +94,13 @@ describe('Novo Agendamento', function () {
       cy.get('[data-testid="input-cliente-nome"]').type('João Silva');
       cy.get('[data-testid="input-procedimento"]').type('Corte de Cabelo');
       cy.get('[data-testid="button-agendar"]').click();
-      
+
       cy.verificarAlert('Por favor, preencha todos os campos obrigatórios');
     });
 
     it('não deve permitir criar sem nenhum campo', function () {
       cy.get('[data-testid="button-agendar"]').click();
-      
+
       cy.verificarAlert('Por favor, preencha todos os campos obrigatórios');
     });
   });

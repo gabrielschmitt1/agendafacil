@@ -62,4 +62,3 @@ export const useAppTheme = () => {
   const colorScheme = useColorScheme();
   return colorScheme === 'dark' ? darkTheme : lightTheme;
 };
-

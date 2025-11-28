@@ -2,7 +2,7 @@ describe('Detalhes do Agendamento', function () {
   beforeEach(function () {
     cy.visit('/');
     cy.limparDados();
-    
+
     // Criar um agendamento para testar
     cy.fixture('agendamento').then(function (dados) {
       cy.criarAgendamento(dados.completo);

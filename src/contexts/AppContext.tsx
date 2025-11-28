@@ -47,7 +47,7 @@ const agendamentosIniciais: Agendamento[] = [
     status: 'proximo',
     avatarUrl: 'https://i.pravatar.cc/150?img=5',
   },
-  
+
   // Agendamentos Concluídos (passados) - Última semana
   {
     id: '3',
@@ -75,7 +75,7 @@ const agendamentosIniciais: Agendamento[] = [
     status: 'passado',
     avatarUrl: 'https://i.pravatar.cc/150?img=10',
   },
-  
+
   // Agendamentos Concluídos - Último mês
   {
     id: '5',
@@ -103,7 +103,7 @@ const agendamentosIniciais: Agendamento[] = [
     status: 'passado',
     avatarUrl: 'https://i.pravatar.cc/150?img=13',
   },
-  
+
   // Agendamentos Concluídos - Meses anteriores
   {
     id: '7',
@@ -153,7 +153,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     try {
       setIsLoading(true);
       const dadosSalvos = await AsyncStorage.getItem(STORAGE_KEY);
-      
+
       if (dadosSalvos) {
         const agendamentosParsed = JSON.parse(dadosSalvos);
         // Converter strings de data de volta para objetos Date
@@ -185,7 +185,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const adicionarAgendamento = async (agendamento: Omit<Agendamento, 'id'>): Promise<Agendamento> => {
+  const adicionarAgendamento = async (
+    agendamento: Omit<Agendamento, 'id'>
+  ): Promise<Agendamento> => {
     const novoAgendamento: Agendamento = {
       ...agendamento,
       id: Date.now().toString(),
@@ -205,9 +207,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const concluirAgendamento = async (id: string) => {
-    setAgendamentos(
-      agendamentos.map((a) => (a.id === id ? { ...a, status: 'passado' } : a))
-    );
+    setAgendamentos(agendamentos.map((a) => (a.id === id ? { ...a, status: 'passado' } : a)));
   };
 
   const limparDados = async () => {
@@ -226,7 +226,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
     // Definir data inicial baseada no período
     let dataInicio = new Date();
-    
+
     switch (periodo) {
       case 'Semanal':
         // Últimos 7 dias
@@ -241,16 +241,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         dataInicio.setDate(hoje.getDate() - 365);
         break;
     }
-    
+
     dataInicio.setHours(0, 0, 0, 0);
 
     // Filtrar apenas agendamentos concluídos (passados) dentro do período
     const agendamentosFiltrados = agendamentos.filter((a) => {
       if (a.status !== 'passado') return false;
-      
+
       const dataAgendamento = new Date(a.data);
       dataAgendamento.setHours(0, 0, 0, 0);
-      
+
       return dataAgendamento >= dataInicio && dataAgendamento <= hoje;
     });
 
@@ -262,8 +262,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     // Calcular vendas por tipo de pagamento
     const vendasPorPagamento: { [key: string]: number } = {};
     agendamentosFiltrados.forEach((a) => {
-      vendasPorPagamento[a.tipoPagamento] =
-        (vendasPorPagamento[a.tipoPagamento] || 0) + a.valor;
+      vendasPorPagamento[a.tipoPagamento] = (vendasPorPagamento[a.tipoPagamento] || 0) + a.valor;
     });
 
     console.log(`📊 Relatório ${periodo}: ${agendamentosFiltrados.length} agendamentos concluídos`);
@@ -301,4 +300,3 @@ export const useApp = () => {
   }
   return context;
 };
-

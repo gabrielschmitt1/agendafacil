@@ -55,8 +55,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Determinar se deve usar tema escuro
-  const isDarkMode =
-    themeMode === 'dark' || (themeMode === 'auto' && systemColorScheme === 'dark');
+  const isDarkMode = themeMode === 'dark' || (themeMode === 'auto' && systemColorScheme === 'dark');
 
   // Selecionar tema apropriado
   const theme = isDarkMode ? darkTheme : lightTheme;
@@ -87,4 +86,3 @@ export const useThemeContext = () => {
   }
   return context;
 };
-

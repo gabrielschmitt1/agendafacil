@@ -34,7 +34,7 @@ describe('Relatórios', function () {
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.concluirAgendamento(dados.completo.clienteNome);
       });
-      
+
       cy.navegarParaAba('Relatorios');
       cy.verificarTexto('Lucro Total');
       cy.contains('R$').should('exist');
@@ -46,7 +46,7 @@ describe('Relatórios', function () {
         cy.get('[data-testid="button-ver-agendamentos"]').click();
         cy.concluirAgendamento(dados.completo.clienteNome);
       });
-      
+
       cy.navegarParaAba('Relatorios');
       cy.verificarTexto('PIX');
     });
@@ -55,13 +55,13 @@ describe('Relatórios', function () {
   describe('Filtros de Período', function () {
     it('deve alternar entre períodos', function () {
       cy.navegarParaAba('Relatorios');
-      
+
       cy.alternarPeriodoRelatorio('Semanal');
       cy.verificarTexto('Total Vendido');
-      
+
       cy.alternarPeriodoRelatorio('Mensal');
       cy.verificarTexto('Total Vendido');
-      
+
       cy.alternarPeriodoRelatorio('Anual');
       cy.verificarTexto('Total Vendido');
     });

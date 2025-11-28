@@ -20,7 +20,9 @@ declare namespace Cypress {
     selecionarData(dia: string): Chainable<void>;
     selecionarHora(hora: string): Chainable<void>;
     buscarAgendamento(termo: string): Chainable<void>;
-    navegarParaAba(aba: 'NovoAgendamento' | 'MeusAgendamentos' | 'Relatorios' | 'Configuracoes'): Chainable<void>;
+    navegarParaAba(
+      aba: 'NovoAgendamento' | 'MeusAgendamentos' | 'Relatorios' | 'Configuracoes'
+    ): Chainable<void>;
     filtrarAgendamentos(filtro: 'proximo' | 'passado'): Chainable<void>;
     abrirMenuAgendamento(nomeCliente: string): Chainable<void>;
     concluirAgendamento(nomeCliente: string): Chainable<void>;
@@ -33,4 +35,3 @@ declare namespace Cypress {
     verificarBotao(texto: string): Chainable<void>;
   }
 }
-

@@ -1,5 +1,9 @@
 import React from 'react';
-import { NavigationContainer, DefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme as NavigationDarkTheme,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -37,9 +41,9 @@ const { LightTheme, DarkTheme } = adaptNavigationTheme({
 
 function MainTabs() {
   const { theme, isDarkMode } = useThemeContext();
-  
+
   const navigationTheme = isDarkMode ? DarkTheme : LightTheme;
-  
+
   return (
     <Tab.Navigator
       initialRouteName="MeusAgendamentos"
@@ -97,7 +101,7 @@ function MainTabs() {
 
 export function AppNavigator() {
   const { theme, isDarkMode } = useThemeContext();
-  
+
   const navigationTheme = {
     ...(isDarkMode ? DarkTheme : LightTheme),
     colors: {
@@ -109,7 +113,7 @@ export function AppNavigator() {
       border: theme.colors.outline,
     },
   };
-  
+
   return (
     <NavigationContainer theme={navigationTheme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -128,4 +132,3 @@ export function AppNavigator() {
     </NavigationContainer>
   );
 }
-

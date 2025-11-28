@@ -21,9 +21,7 @@ export default function RelatoriosScreen() {
     return (valor / total) * 100;
   };
 
-  const tiposPagamento = Object.entries(resumo.vendasPorPagamento).sort(
-    ([, a], [, b]) => b - a
-  );
+  const tiposPagamento = Object.entries(resumo.vendasPorPagamento).sort(([, a], [, b]) => b - a);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
@@ -51,7 +49,10 @@ export default function RelatoriosScreen() {
         <View style={styles.cardsGrid}>
           <Card testID="card-lucro-liquido" style={[styles.metricCard, styles.primaryCard]}>
             <Card.Content>
-              <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Lucro Total
               </Text>
               <Text variant="headlineMedium" style={styles.metricValue}>
@@ -62,7 +63,10 @@ export default function RelatoriosScreen() {
 
           <Card testID="card-receita-total" style={[styles.metricCard, styles.primaryCard]}>
             <Card.Content>
-              <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Total Vendido
               </Text>
               <Text variant="headlineMedium" style={styles.metricValue}>
@@ -71,9 +75,15 @@ export default function RelatoriosScreen() {
             </Card.Content>
           </Card>
 
-          <Card testID="card-custo-total" style={[styles.metricCard, styles.primaryCard, styles.fullWidth]}>
+          <Card
+            testID="card-custo-total"
+            style={[styles.metricCard, styles.primaryCard, styles.fullWidth]}
+          >
             <Card.Content>
-              <Text variant="bodyMedium" style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}>
+              <Text
+                variant="bodyMedium"
+                style={[styles.metricLabel, { color: theme.colors.onSurfaceVariant }]}
+              >
                 Custo Total
               </Text>
               <Text variant="headlineMedium" style={styles.metricValue}>
@@ -91,7 +101,10 @@ export default function RelatoriosScreen() {
           <Card.Content>
             <View style={styles.chartHeader}>
               <View>
-                <Text variant="bodyMedium" style={[styles.chartLabel, { color: theme.colors.onSurfaceVariant }]}>
+                <Text
+                  variant="bodyMedium"
+                  style={[styles.chartLabel, { color: theme.colors.onSurfaceVariant }]}
+                >
                   Vendas por Pagamento
                 </Text>
                 <Text variant="headlineMedium" style={styles.chartValue}>
@@ -110,14 +123,22 @@ export default function RelatoriosScreen() {
                 return (
                   <View key={tipo} style={styles.barContainer}>
                     <View style={styles.barHeader}>
-                      <Text variant="bodyMedium" style={[styles.barLabel, { color: theme.colors.onSurfaceVariant }]}>
+                      <Text
+                        variant="bodyMedium"
+                        style={[styles.barLabel, { color: theme.colors.onSurfaceVariant }]}
+                      >
                         {tipo}
                       </Text>
-                      <Text variant="bodyMedium" style={[styles.barValue, { color: theme.colors.onSurfaceVariant }]}>
+                      <Text
+                        variant="bodyMedium"
+                        style={[styles.barValue, { color: theme.colors.onSurfaceVariant }]}
+                      >
                         {formatarValor(valor)}
                       </Text>
                     </View>
-                    <View style={[styles.barTrack, { backgroundColor: theme.colors.surfaceVariant }]}>
+                    <View
+                      style={[styles.barTrack, { backgroundColor: theme.colors.surfaceVariant }]}
+                    >
                       <View
                         style={[
                           styles.barFill,
@@ -231,4 +252,3 @@ const styles = StyleSheet.create({
     height: 24,
   },
 });
-

@@ -19,33 +19,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
       - name: Create Release PR or Release
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         id: release
         with:
-          release-type: node
-          package-name: agendafacil
-          changelog-types: |
-            [
-              {"type": "feat", "section": "✨ Novidades", "hidden": false},
-              {"type": "fix", "section": "🐛 Correções", "hidden": false},
-              {"type": "perf", "section": "⚡ Performance", "hidden": false},
-              {"type": "refactor", "section": "♻️ Refatorações", "hidden": false},
-              {"type": "docs", "section": "📚 Documentação", "hidden": false},
-              {"type": "style", "section": "💄 Estilo", "hidden": false},
-              {"type": "test", "section": "✅ Testes", "hidden": false},
-              {"type": "ci", "section": "👷 CI/CD", "hidden": false},
-              {"type": "chore", "section": "🔧 Outros", "hidden": false}
-            ]
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
 
       # Se uma release foi criada, dispara o build do APK
       - name: Trigger Android Build
@@ -55,3 +34,6 @@ jobs:
           event-type: release-created
           client-payload: '{"tag": "${{ steps.release.outputs.tag_name }}"}'
 
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}

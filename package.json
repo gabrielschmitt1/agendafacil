@@ -6,7 +6,11 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "audit": "pnpm audit",
+    "audit:fix": "pnpm audit --fix",
+    "security:scan": "trivy fs --severity HIGH,CRITICAL --exit-code 1 .",
+    "security:scan:all": "trivy fs --severity LOW,MEDIUM,HIGH,CRITICAL ."
   },
   "dependencies": {
     "@babel/runtime": "^7.28.4",

@@ -137,15 +137,16 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       // A data pode vir como Date ou string, precisamos lidar com ambos
       let dataAgendamento: Date;
 
+      // Garantir que temos um Date válido
+      const [hora, minuto] = agendamento.hora.split(':').map(Number);
       if (agendamento.data instanceof Date) {
         // Se já é um Date, usar diretamente
-        const [hora, minuto] = agendamento.hora.split(':').map(Number);
         dataAgendamento = new Date(agendamento.data);
         dataAgendamento.setHours(hora, minuto, 0, 0);
       } else {
-        // Se é string no formato DD/MM/YYYY
-        const [dia, mes, ano] = agendamento.data.toString().split('/').map(Number);
-        const [hora, minuto] = agendamento.hora.split(':').map(Number);
+        // Se é string no formato DD/MM/YYYY (fallback para dados legados)
+        const dataStr = String(agendamento.data);
+        const [dia, mes, ano] = dataStr.split('/').map(Number);
         dataAgendamento = new Date(ano, mes - 1, dia, hora, minuto);
       }
 

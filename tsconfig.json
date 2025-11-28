@@ -8,6 +8,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules/.pnpm"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "cypress", "web-build", "dist"],
+  "include": ["**/*.ts", "**/*.tsx", "*.ts", "*.tsx"]
 }
